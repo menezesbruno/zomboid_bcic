@@ -1,6 +1,6 @@
 version=1
 id=3036830549
-title=Better Clothing Info Comparison
+title=Better Clothing Info Comparison (Build 41 and 42)
 description=Adds more comparing information (Condition, Insulation, Wind Resistance and Holes) between an equipped cloth and another one in your inventory
 tags=Build 41;Build 42;Clothing/Armor;Interface
 visibility=public
