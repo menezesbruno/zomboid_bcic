@@ -1,6 +1,6 @@
 -- author: Bruno Menezes & Fred Davin
--- version: 0.3a (2025-01-07)
--- based on: 42+
+-- version: 0.3a (2025-01-08)
+-- based on: 41+
 
 require "ISUI/ISToolTipInv"
 require "bcic_TooltipClothing"

@@ -1,6 +1,6 @@
 -- author: Bruno Menezes & Fred Davin
--- version: 0.3a (2025-01-07)
--- based on: 42+
+-- version: 0.3a (2025-01-08)
+-- based on: 41+
 
 function DoTooltipClothing(objTooltip, item, layoutTooltip)
     if item:isCosmetic() then
@@ -97,10 +97,6 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
             end
         end
     end
-
-    print("item:isInPlayerInventory()", item:isInPlayerInventory());
-    print("item:isEquipped()", item:isEquipped());
-    print("isEquippedInPlayer", isEquippedInPlayer);
 
     previousItemRunSpeedModifier = previousItemRunSpeedModifier == 0 and 1.0 or previousItemRunSpeedModifier;
     previousItemCombatSpeedModifier = (previousItemCombatSpeedModifier == 0 or previousItemCombatSpeedModifier > 1) and

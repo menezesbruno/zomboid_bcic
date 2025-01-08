@@ -1,6 +1,6 @@
 -- author: Bruno Menezes & Fred Davin
--- version: 0.3a (2025-01-07)
--- based on: 42+
+-- version: 0.3a (2025-01-08)
+-- based on: 41+
 
 function DoTooltipClothing(objTooltip, item, layoutTooltip)
     if item:isCosmetic() then
@@ -9,7 +9,7 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
 
     local layoutItem;
     local isEquippedInPlayer = item:isEquipped() and item:isInPlayerInventory();
-    
+
     -- New Item
     local newItemHolesNumber = item:getHolesNumber();
     local newItemCondition = item:getCondition();
@@ -69,7 +69,7 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     end
     -- End ProgressBar
 
-    if not item:isInPlayerInventory() and objTooltip:getCharacter() ~= nil then
+    if not isEquippedInPlayer and objTooltip:getCharacter() ~= nil then
         local wornItems = objTooltip:getCharacter():getWornItems();
         local bodyLocationGroup = wornItems:getBodyLocationGroup();
         local location = item:getBodyLocation();
@@ -102,39 +102,35 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     previousItemCombatSpeedModifier = (previousItemCombatSpeedModifier == 0 or previousItemCombatSpeedModifier > 1) and
         1.0 or previousItemCombatSpeedModifier;
 
-        print("item:isInPlayerInventory()", item:isInPlayerInventory());
-        print("item:isEquipped()", item:isEquipped());
-        print("isEquippedInPlayer", isEquippedInPlayer);
-
     local holesComparison = DrawItem:New(newItemHolesNumber, previousItemHolesNumber, "Tooltip_clothing_holes",
-        layoutItem, layoutTooltip, 0, true, item:isInPlayerInventory());
+        layoutItem, layoutTooltip, 0, true, isEquippedInPlayer);
 
     local conditionComparison = DrawItem:New(newItemCondition * 10, previousItemCondition * 10,
-        "Tooltip_weapon_Condition", layoutItem, layoutTooltip, 0, false, item:isInPlayerInventory());
+        "Tooltip_weapon_Condition", layoutItem, layoutTooltip, 0, false, isEquippedInPlayer);
 
     local insulationComparison = DrawItem:New(newItemInsulation * 100, previousItemInsulation * 100,
-        "Tooltip_item_Insulation", layoutItem, layoutTooltip, 0, false, item:isInPlayerInventory());
+        "Tooltip_item_Insulation", layoutItem, layoutTooltip, 0, false, isEquippedInPlayer);
 
     local windResistanceComparison = DrawItem:New(newItemWindresistance * 100, previousItemWindResistance * 100,
-        "Tooltip_item_Windresist", layoutItem, layoutTooltip, 0, false, item:isInPlayerInventory());
+        "Tooltip_item_Windresist", layoutItem, layoutTooltip, 0, false, isEquippedInPlayer);
 
     local waterResistanceComparison = DrawItem:New(newItemWaterResistance * 100, previousItemWaterResistance * 100,
-        "Tooltip_item_Waterresist", layoutItem, layoutTooltip, 0, false, item:isInPlayerInventory());
+        "Tooltip_item_Waterresist", layoutItem, layoutTooltip, 0, false, isEquippedInPlayer);
 
     local biteDefenseComparison = DrawItem:New(newItemBiteDefense, previousItemBiteDefense, "Tooltip_BiteDefense",
-        layoutItem, layoutTooltip, 0, false, item:isInPlayerInventory());
+        layoutItem, layoutTooltip, 0, false, isEquippedInPlayer);
 
     local scratchDefenseComparison = DrawItem:New(newItemScratchDefense, previousItemScratchDefense,
-        "Tooltip_ScratchDefense", layoutItem, layoutTooltip, 0, false, item:isInPlayerInventory());
+        "Tooltip_ScratchDefense", layoutItem, layoutTooltip, 0, false, isEquippedInPlayer);
 
     local bulletDefenseComparison = DrawItem:New(newItemBulletDefense, previousItemBulletDefense, "Tooltip_BulletDefense",
-        layoutItem, layoutTooltip, 0, false, item:isInPlayerInventory());
+        layoutItem, layoutTooltip, 0, false, isEquippedInPlayer);
 
     local runSpeedModifier = DrawItem:New(newItemRunSpeedModifier, previousItemRunSpeedModifier,
-        "Tooltip_RunSpeedModifier", layoutItem, layoutTooltip, 2, false, item:isInPlayerInventory());
+        "Tooltip_RunSpeedModifier", layoutItem, layoutTooltip, 2, false, isEquippedInPlayer);
 
     local combatSpeedModifier = DrawItem:New(newItemCombatSpeedModifier, previousItemCombatSpeedModifier,
-        "Tooltip_CombatSpeedModifier", layoutItem, layoutTooltip, 2, false, item:isInPlayerInventory());
+        "Tooltip_CombatSpeedModifier", layoutItem, layoutTooltip, 2, false, isEquippedInPlayer);
 
     local clothingMaterial = DrawItem:New(newItemClothingMaterial, nil, "IGUI_ItemCat_Material", layoutItem,
         layoutTooltip, nil, nil, nil);
