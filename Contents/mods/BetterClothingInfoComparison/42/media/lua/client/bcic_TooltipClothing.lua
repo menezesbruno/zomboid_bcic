@@ -22,6 +22,9 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     local newItemRunSpeedModifier = item:getRunSpeedModifier();
     local newItemCombatSpeedModifier = item:getCombatSpeedModifier();
     local newItemClothingMaterial = item:getFabricType();
+    local newItemVisionModifier = item:getVisionModifier();
+    local newItemHearingModifier = item:getHearingModifier();
+    local newItemDiscomfortModifier = item:getDiscomfortModifier();
 
     -- Previous Item
     local previousItemHolesNumber = 0.0;
@@ -34,6 +37,9 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     local previousItemBulletDefense = 0.0;
     local previousItemRunSpeedModifier = 0.0;
     local previousItemCombatSpeedModifier = 0.0;
+    local previousItemVisionModifier = 0.0;
+    local previousItemHearingModifier = 0.0;
+    local previousItemDiscomfortModifier = 0.0;
 
     -- ProgressBar
     local conditionState = newItemCondition / item:getConditionMax();
@@ -94,6 +100,9 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
                 previousItemBulletDefense = previousItemBulletDefense + wornItem:getBulletDefense();
                 previousItemRunSpeedModifier = previousItemRunSpeedModifier + wornItem:getRunSpeedModifier();
                 previousItemCombatSpeedModifier = previousItemCombatSpeedModifier + wornItem:getCombatSpeedModifier();
+                previousItemVisionModifier = previousItemVisionModifier + wornItem:getVisionModifier();
+                previousItemHearingModifier = previousItemHearingModifier + wornItem:getHearingModifier();
+                previousItemDiscomfortModifier = previousItemDiscomfortModifier + wornItem:getDiscomfortModifier();
             end
         end
     end
@@ -101,6 +110,10 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     previousItemRunSpeedModifier = previousItemRunSpeedModifier == 0 and 1.0 or previousItemRunSpeedModifier;
     previousItemCombatSpeedModifier = (previousItemCombatSpeedModifier == 0 or previousItemCombatSpeedModifier > 1) and
         1.0 or previousItemCombatSpeedModifier;
+
+    previousItemVisionModifier = previousItemVisionModifier == 0 and 1.0 or previousItemVisionModifier;
+    previousItemHearingModifier = previousItemHearingModifier == 0 and 1.0 or previousItemHearingModifier;
+    --previousItemDiscomfortModifier = previousItemDiscomfortModifier == 0 and 1.0 or previousItemRunSpeedModifier;
 
     local holesComparison = DrawItem:New(newItemHolesNumber, previousItemHolesNumber, "Tooltip_clothing_holes",
         layoutItem, layoutTooltip, 0, true, isEquippedInPlayer);
@@ -132,6 +145,15 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     local combatSpeedModifier = DrawItem:New(newItemCombatSpeedModifier, previousItemCombatSpeedModifier,
         "Tooltip_CombatSpeedModifier", layoutItem, layoutTooltip, 2, false, isEquippedInPlayer);
 
+    local visionModifier = DrawItem:New(newItemVisionModifier, previousItemVisionModifier,
+        "Tooltip_item_VisionImpariment", layoutItem, layoutTooltip, 2, false, isEquippedInPlayer);
+
+    local hearingModifier = DrawItem:New(newItemHearingModifier, previousItemHearingModifier,
+        "Tooltip_item_HearingImpariment", layoutItem, layoutTooltip, 2, false, isEquippedInPlayer);
+
+    local discomfortModifier = DrawItem:New(newItemDiscomfortModifier, previousItemDiscomfortModifier,
+        "Tooltip_item_Discomfort", layoutItem, layoutTooltip, 2, true, isEquippedInPlayer);
+
     local clothingMaterial = DrawItem:New(newItemClothingMaterial, nil, "IGUI_ItemCat_Material", layoutItem,
         layoutTooltip, nil, nil, nil);
 
@@ -145,5 +167,8 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     bulletDefenseComparison:Render(BCIC_SETTINGS.options.ShowBulletDefenseComparison);
     runSpeedModifier:Render(BCIC_SETTINGS.options.ShowRunSpeedModifierComparison);
     combatSpeedModifier:Render(BCIC_SETTINGS.options.ShowCombatSpeedModifierComparison);
+    visionModifier:Render(BCIC_SETTINGS.options.ShowVisionModifierComparison)
+    hearingModifier:Render(BCIC_SETTINGS.options.ShowHearingModifierComparison)
+    discomfortModifier:Render(BCIC_SETTINGS.options.ShowDiscomfortModifierComparison)
     clothingMaterial:Render(BCIC_SETTINGS.options.ShowClothingMaterial);
 end

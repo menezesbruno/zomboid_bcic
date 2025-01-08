@@ -126,7 +126,7 @@ function SetItemWithComparison(newItemValue, previousItemValue, label, layoutIte
             end
         end
     elseif newItemValue ~= 0.0 then
-        if newItemValue == 1 and (label == "Tooltip_RunSpeedModifier" or label == "Tooltip_CombatSpeedModifier") then
+        if newItemValue == 1 and (label == "Tooltip_RunSpeedModifier" or label == "Tooltip_CombatSpeedModifier" or label == "Tooltip_item_VisionImpariment" or label == "Tooltip_item_HearingImpariment") then
             return;
         end
         SetItemWithoutComparison(newItemValue, label, layoutItem, layoutTooltip, decimal);

@@ -27,6 +27,9 @@ BCIC_SETTINGS = {
         ShowBulletDefenseComparison       = true,
         ShowRunSpeedModifierComparison    = true,
         ShowCombatSpeedModifierComparison = true,
+        ShowVisionModifierComparison      = true,
+        ShowHearingModifierComparison     = true,
+        ShowDiscomfortModifierComparison  = true,
         ShowClothingMaterial              = true
     },
     names = {
@@ -52,6 +55,9 @@ BCIC_SETTINGS = {
         ShowBulletDefenseComparison = "Show Bullet Defense Comparison",
         ShowRunSpeedModifierComparison = "Show Run Speed Modifier Comparison",
         ShowCombatSpeedModifierComparison = "Show Combat Speed Modifier Comparison",
+        ShowVisionModifierComparison = "Show Vision Modifier Comparison",
+        ShowHearingModifierComparison = "Show Hearing Modifier Comparison",
+        ShowDiscomfortModifierComparison = "Show Discomfort Modifier Comparison",
         ShowClothingMaterial = "Show Clothing Material"
     },
     mod_id = "BetterClothingInfoComparison",
@@ -84,5 +90,8 @@ if ModOptions and ModOptions.getInstance then
     ShowBulletDefenseComparison = settings:getData("showBulletDefenseComparison");
     ShowRunSpeedModifierComparison = settings:getData("showRunSpeedModifierComparison");
     ShowCombatSpeedModifierComparison = settings:getData("showCombatSpeedModifierComparison");
+    ShowVisionModifierComparison = settings:getData("showVisionModifierComparison");
+    ShowHearingModifierComparison = settings:getData("showHearingModifierComparison");
+    ShowDiscomfortModifierComparison = settings:getData("showDiscomfortModifierComparison");
     ShowClothingMaterial = settings:getData("ShowClothingMaterial");
 end
