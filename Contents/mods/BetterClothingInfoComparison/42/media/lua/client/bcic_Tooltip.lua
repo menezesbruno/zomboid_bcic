@@ -23,7 +23,7 @@ function bcic_DoTooltip(objTooltip, item)
     layoutTooltip:setMinLabelWidth(80);
     local layout = layoutTooltip:addItem();
     layout:setLabel(getText("Tooltip_item_Weight") .. ":", 1, 1, 0.8, 1);
-    local var16 = item:isInPlayerInventory();
+    local var16 = item:isEquipped() and item:isInPlayerInventory();
     local var17;
     local var10001;
     if not item:IsWeapon() and not item:IsClothing() and not item:IsDrainable() and

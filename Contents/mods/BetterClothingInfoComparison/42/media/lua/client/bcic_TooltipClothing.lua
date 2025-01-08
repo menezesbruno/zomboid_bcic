@@ -8,7 +8,8 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     end
 
     local layoutItem;
-
+    local isEquippedInPlayer = item:isEquipped() and item:isInPlayerInventory();
+    
     -- New Item
     local newItemHolesNumber = item:getHolesNumber();
     local newItemCondition = item:getCondition();
@@ -100,6 +101,10 @@ function DoTooltipClothing(objTooltip, item, layoutTooltip)
     previousItemRunSpeedModifier = previousItemRunSpeedModifier == 0 and 1.0 or previousItemRunSpeedModifier;
     previousItemCombatSpeedModifier = (previousItemCombatSpeedModifier == 0 or previousItemCombatSpeedModifier > 1) and
         1.0 or previousItemCombatSpeedModifier;
+
+        print("item:isInPlayerInventory()", item:isInPlayerInventory());
+        print("item:isEquipped()", item:isEquipped());
+        print("isEquippedInPlayer", isEquippedInPlayer);
 
     local holesComparison = DrawItem:New(newItemHolesNumber, previousItemHolesNumber, "Tooltip_clothing_holes",
         layoutItem, layoutTooltip, 0, true, item:isInPlayerInventory());
