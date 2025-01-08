@@ -34,7 +34,7 @@ function DrawItemAsText(self)
 end
 
 function DrawItemAsNumber(self)
-    if self.label == "Tooltip_RunSpeedModifier" or self.label == "Tooltip_CombatSpeedModifier" then
+    if self.label == "Tooltip_RunSpeedModifier" or self.label == "Tooltip_CombatSpeedModifier" or self.label == "Tooltip_item_VisionImpariment" or self.label == "Tooltip_item_HearingImpariment" then
         if self.isEquipped and self.newItemValue ~= 1.0 then
             SetItemWithoutComparison(self.newItemValue, self.label, self.layoutItem, self.layoutTooltip, self
                 .decimal);
